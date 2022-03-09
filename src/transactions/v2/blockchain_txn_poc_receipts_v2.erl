@@ -603,7 +603,7 @@ validate(_POCVersion, Txn, Path, LayerData, LayerHashes, OldLedger) ->
                                                IsFirst = Elem == hd(?MODULE:path(Txn)),
                                                Receipt = blockchain_poc_path_element_v1:receipt(Elem),
                                                ExpectedOrigin = case IsFirst of
-                                                                    true -> p2p;
+                                                                    true -> grpc;
                                                                     false -> radio
                                                                 end,
                                                %% check the receipt
@@ -1290,7 +1290,7 @@ to_json_test() ->
     OnionKeyHash = <<"onion_key_hash">>,
     BlockHash = <<"blockhash">>,
 
-    Receipt = blockchain_poc_receipt_v1:new(<<"r">>, 10, 10, <<"data">>, p2p, 1.2, 915.2, 2, <<"dr">>),
+    Receipt = blockchain_poc_receipt_v1:new(<<"r">>, 10, 10, <<"data">>, grpc, 1.2, 915.2, 2, <<"dr">>),
 
     W1 = blockchain_poc_witness_v1:new(<<"w1">>, 10, 10, <<"ph">>, 1.2, 915.2, 2, <<"dr">>),
     W2 = blockchain_poc_witness_v1:new(<<"w2">>, 10, 10, <<"ph">>, 1.2, 915.2, 2, <<"dr">>),
