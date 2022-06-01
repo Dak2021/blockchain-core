@@ -48,9 +48,9 @@
              | blockchain_txn_unstake_validator_v1:txn_validator_heartbeat()
              | blockchain_txn_transfer_hotspot_v2:txn_transfer_hotspot_v2()
              | blockchain_txn_poc_receipts_v2:txn_poc_receipts_v2()
-             | blockchain_txn_add_network_v1:txn_add_network_v1()
-             | blockchain_txn_update_network_v1:txn_update_network_v1()
-             | blockchain_txn_network_rewards_v1:txn_network_rewards_v1()
+             | blockchain_txn_add_subnetwork_v1:txn_add_subnetwork_v1()
+             | blockchain_txn_update_subnetwork_v1:txn_update_subnetwork_v1()
+             | blockchain_txn_subnetwork_rewards_v1:txn_subnetwork_rewards_v1()
              | blockchain_txn_token_convert_v1:txn_token_convert_v1().
 
 -type before_commit_callback() :: fun((blockchain:blockchain(), blockchain_block:hash()) -> ok | {error, any()}).
@@ -144,9 +144,9 @@
     {blockchain_txn_consensus_group_failure_v1, 35},
     {blockchain_txn_transfer_hotspot_v2, 36},
     {blockchain_txn_poc_receipts_v2, 37},
-    {blockchain_txn_add_network_v1, 38},
-    {blockchain_txn_update_network_v1, 39},
-    {blockchain_txn_network_rewards_v1, 40},
+    {blockchain_txn_add_subnetwork_v1, 38},
+    {blockchain_txn_update_subnetwork_v1, 39},
+    {blockchain_txn_subnetwork_rewards_v1, 40},
     {blockchain_txn_token_convert_v1, 41}
 ]).
 
@@ -259,12 +259,12 @@ wrap_txn(#blockchain_txn_transfer_hotspot_v2_pb{}=Txn) ->
     #blockchain_txn_pb{txn={transfer_hotspot_v2, Txn}};
 wrap_txn(#blockchain_txn_poc_receipts_v2_pb{}=Txn) ->
     #blockchain_txn_pb{txn={poc_receipts_v2, Txn}};
-wrap_txn(#blockchain_txn_add_network_v1_pb{}=Txn) ->
-    #blockchain_txn_pb{txn={add_network, Txn}};
-wrap_txn(#blockchain_txn_update_network_v1_pb{}=Txn) ->
-    #blockchain_txn_pb{txn={update_network, Txn}};
-wrap_txn(#blockchain_txn_network_rewards_v1_pb{}=Txn) ->
-    #blockchain_txn_pb{txn={network_rewards, Txn}};
+wrap_txn(#blockchain_txn_add_subnetwork_v1_pb{}=Txn) ->
+    #blockchain_txn_pb{txn={add_subnetwork, Txn}};
+wrap_txn(#blockchain_txn_update_subnetwork_v1_pb{}=Txn) ->
+    #blockchain_txn_pb{txn={update_subnetwork, Txn}};
+wrap_txn(#blockchain_txn_subnetwork_rewards_v1_pb{}=Txn) ->
+    #blockchain_txn_pb{txn={subnetwork_rewards, Txn}};
 wrap_txn(#blockchain_txn_token_convert_v1_pb{}=Txn) ->
     #blockchain_txn_pb{txn={token_convert, Txn}}.
 
@@ -722,12 +722,12 @@ type(#blockchain_txn_transfer_hotspot_v2_pb{}) ->
     blockchain_txn_transfer_hotspot_v2;
 type(#blockchain_txn_poc_receipts_v2_pb{}) ->
     blockchain_txn_poc_receipts_v2;
-type(#blockchain_txn_add_network_v1_pb{}) ->
-    blockchain_txn_add_network_v1;
-type(#blockchain_txn_update_network_v1_pb{}) ->
-    blockchain_txn_update_network_v1;
-type(#blockchain_txn_network_rewards_v1_pb{}) ->
-    blockchain_txn_network_rewards_v1;
+type(#blockchain_txn_add_subnetwork_v1_pb{}) ->
+    blockchain_txn_add_subnetwork_v1;
+type(#blockchain_txn_update_subnetwork_v1_pb{}) ->
+    blockchain_txn_update_subnetwork_v1;
+type(#blockchain_txn_subnetwork_rewards_v1_pb{}) ->
+    blockchain_txn_subnetwork_rewards_v1;
 type(#blockchain_txn_token_convert_v1_pb{}) ->
     blockchain_txn_token_convert_v1.
 
